@@ -1,0 +1,46 @@
+program: train.py
+method: bayes
+metric:
+  goal: maximize
+  name: val_f1
+parameters:
+  # embedding_size:
+  #   max: 256
+  #   min: 32
+  #   distribution: int_uniform
+  # kernel_size:
+  #   max: 6
+  #   min: 3
+  #   distribution: int_uniform
+  # n_encoders:
+  #   max: 5
+  #   min: 1
+  #   distribution: int_uniform
+  learning_rate:
+    max: 0.001
+    min: 0.00000001
+    distribution: uniform
+  model_type:
+    values:
+      # - 'UNet'
+      - 'DeepLabV3'
+      # - 'DilatedUNet'
+    distribution: categorical
+  batch_size:
+    max: 16
+    min: 4
+    distribution: int_uniform
+  backbone:
+    values:
+      - resnet50
+      - resnet101
+    distribution: categorical
+  # output_stride:
+  #   values:
+  #     - 8
+  #     - 16
+  #   distribution: categorical
+  max_epochs:
+    max: 20
+    min: 10
+    distribution: int_uniform
